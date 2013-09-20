@@ -1,11 +1,25 @@
 
-ftw = [3,"O","O", 9382]
+# 1 2 3
+# 4 5 6
+# 7 8 9
 
-ftw.map! {|i| i != "O" ? "O" : i
 
-}
+game_board = [1,2,3,4,5,6,7,8,9]
 
-puts ftw.inspect
+one = game_board.map {|i| i % 3 == 1 ? "X" : i}
+two = game_board.map {|i| i % 3 == 2 ? "X" : i}
+three = game_board.map {|i| i % 3 == 3 ? "X" : i}
+
+
+
+puts one.inspect 
+puts two.inspect
+puts three.inspect
+
+
+
+
+
 
 #I'm getting the error no implicit conversion of String into Integer (TypeError)
 
