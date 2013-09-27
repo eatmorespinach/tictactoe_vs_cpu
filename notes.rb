@@ -1,31 +1,9 @@
 
-# 1 2 3
-# 4 5 6
-# 7 8 9
-
-
-game_board = [1,2,3,4,5,6,7,8,9]
-
 one = game_board.map {|i| i % 3 == 1 ? "X" : i}
 two = game_board.map {|i| i % 3 == 2 ? "X" : i}
 three = game_board.map {|i| i % 3 == 3 ? "X" : i}
 
 
-
-puts one.inspect 
-puts two.inspect
-puts three.inspect
-
-
-
-
-
-
-#I'm getting the error no implicit conversion of String into Integer (TypeError)
-
-#ftw[0] = 1. So why can't it compare it to == 1? Does it have to do with this?
-
-# http://stackoverflow.com/questions/6119373/no-implicit-conversion-from-nil-to-integer-when-trying-to-add-anything-to-arra
 
 
 
