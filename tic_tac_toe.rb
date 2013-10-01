@@ -5,29 +5,41 @@ class Tictactoe
 	attr_accessor :turns
 
 	def initialize
-		@game_board = [1,2,3,4,5,6,7,8,9]
+		@game_board = [[1,2,3],[4,5,6],[7,8,9]]
 		@turns = 9
-		@corner_x = []
-		@winning_combos = [@game_board[0],@game_board[4],@game_board[8]]
+
 	end
 	
-	def display_board
-		"\n
-		#{@game_board[0]} #{@game_board[1]} #{@game_board[2]}\n
-		#{@game_board[3]} #{@game_board[4]} #{@game_board[5]}\n
-		#{@game_board[6]} #{@game_board[7]} #{@game_board[8]}\n
+	def display_game
+		"turns left: #{turns}\n
+		#{@game_board[0][0]} #{@game_board[0][1]} #{@game_board[0][2]}\n
+		#{@game_board[1][0]} #{@game_board[1][1]} #{@game_board[1][2]}\n
+		#{@game_board[2][0]} #{@game_board[2][1]} #{@game_board[2][2]}\n
 		\n"
 	end
 
 	def human_move(spot)
-
-		if @game_board.include?(spot.to_i)
-			@game_board[spot.to_i - 1] = "X"
-		else
-			puts "Please play valid spot on the board"
-		end
-		
-	end 
+		case spot.to_i
+		when 1
+			@game_board[0][0] = "X"	
+		when 2
+			@game_board[0][1] = "X"
+		when 3
+			@game_board[0][2] = "X"	
+		when 4
+			@game_board[1][0] = "X"
+		when 5
+			@game_board[1][1] = "X"	
+		when 6
+			@game_board[1][2] = "X"
+		when 7
+			@game_board[2][0] = "X"	
+		when 8
+			@game_board[2][1] = "X"
+		when 9
+			@game_board[2][2] = "X"
+		end		
+	end
 
 	def cpu_move
 		
@@ -37,7 +49,6 @@ class Tictactoe
 			else
 				@game_board[4] = "O"
 			end
-		else
 			# If any two of opponent's X's are in line with each other
         # and an open space remains on that line, place an O in
         # that remaining space to block (prevent opponent from
@@ -50,12 +61,9 @@ class Tictactoe
 
 
 	def check_for_winner
-		
+		#If X is in game_board 0 or game board 1, place 0 on gameboard 2
 	end
 
-	def turns_left
-		@turns -= 1
-	end
 
 end
 
@@ -106,12 +114,6 @@ end
 # 		end
 
 # 	end
-
-# 	def turns_left
-# 		check_wins
-# 		@turns
-# 	end
-
 
 # end
 

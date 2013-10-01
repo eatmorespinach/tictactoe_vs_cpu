@@ -8,10 +8,10 @@ puts "Welcome to Tic Tac Toe!"
 puts "Select a number for your first move:"
 
 while game.turns > 0
-	puts game.display_board
-	move = gets.chomp
-	game.turns_left
-	puts game.human_move(move)
+	puts game.display_game
+	spot = gets.chomp
+	game.human_move(spot)
+	puts game.display_game
 	puts game.cpu_move
 end
 
