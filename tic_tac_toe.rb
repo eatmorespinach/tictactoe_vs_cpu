@@ -1,4 +1,4 @@
-require 'pry'
+# require 'pry'
 
 class Tictactoe
 
@@ -49,45 +49,55 @@ class Tictactoe
 			else
 				@game_board[1][1] = "O"
 			end
-		else block_horizontal_win
+		else 
+			block_horizontal_win
+			block_vertical_win
 		end
 	end
 	
+	#okay, this code is pretty ghetto
+	#the issue is, when I check for horizontals, and obviously need to check for
+	#verticals, and then the question is, how to I order the checking?
+	#if the human then plays a vertical X and X, how does it not conflict
+	#with the horizontal method code?
 
-	def block_horizontal_win 
-		3.times do |i|
-			row_of_x = 0
-			ii = 2
-			jj = 2
-			3.times do |j|
-				if @game_board[i][j] == "X"
-					row_of_x += 1
 
-					if row_of_x == 2 && ii == 2
-						@game_board[i][j+1] = "O"
-					else @game_board[ii][jj] = "O"
-					end
+  def block_horizontal_win
+  	3.times do |i|
+	    blank_x = -1
+	    x_row_total = 0
+	    3.times do |j|
+        if @game_board[i][j] == "X"
+            x_row_total += 1
+        else
+            blank_x = i
+        end
 
-				else 
-					ii = i
-					jj = j
-				
-				end
-			
+        if j == 2 && x_row_total == 2 && blank_x > -1
+            @game_board[i][blank_x] = "O"
+    		end
 			end
-		end	
-	end
+		end
+  end
 
-#Save the blank index 	
+  def block_vertical_win
+  	3.times do |i|
+	    blank_x = -1
+	    x_row_total = 0
+	    3.times do |j|
+        if @game_board[j][i] == "X"
+            x_row_total += 1
+        else
+            blank_x = j
+        end
 
-#Okay, so I can identify when there are 2 in a row. Now, what's the 
-#best way to place an "O" in the block spot? Should I iterate again in
-#place_block method? 
-	
+        if x_row_total == 2 && blank_x > -1
+					@game_board[blank_x][i] = "O"
+    		end
+			end
+		end
+  end
 
-				# 		@game_board[blank_i][blank_j] == "O"
-				# 	end
-				# else blank_i = [i.to_i] && blank_j = [j.to_i]
 
 
 
