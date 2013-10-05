@@ -4,15 +4,15 @@ require_relative "tic_tac_toe"
 game = Tictactoe.new
 
 puts 
-puts "Welcome to Tic Tac Toe!"
-puts "Select a number for your first move:"
+puts "Welcome to Tic Tac Toe! Select a number for your first move:"
 
 while game.turns > 0
 	puts game.display_game
 	spot = gets.chomp
 	game.human_move(spot)
-	puts game.display_game
+	game.minus_a_turn
 	puts game.cpu_move
+	game.minus_a_turn
 end
 
 
