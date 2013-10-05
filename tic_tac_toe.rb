@@ -45,22 +45,17 @@ class Tictactoe
 
 		if @turns == 8
 			if @game_board[1][1] == "X"
-				@game_board[0][0] = "O"
+				@game_board[0][2] = "O"
 			else
 				@game_board[1][1] = "O"
 			end
 		else 
 			block_horizontal_win
 			block_vertical_win
+			block_diagonal_win
 		end
 	end
 	
-	#okay, this code is pretty ghetto
-	#the issue is, when I check for horizontals, and obviously need to check for
-	#verticals, and then the question is, how to I order the checking?
-	#if the human then plays a vertical X and X, how does it not conflict
-	#with the horizontal method code?
-
 
   def block_horizontal_win
   	3.times do |i|
@@ -70,10 +65,10 @@ class Tictactoe
         if @game_board[i][j] == "X"
             x_row_total += 1
         else
-            blank_x = i
+            blank_x = j
         end
-
-        if j == 2 && x_row_total == 2 && blank_x > -1
+        # binding.pry
+        if x_row_total == 2 && blank_x > -1
             @game_board[i][blank_x] = "O"
     		end
 			end
@@ -86,9 +81,9 @@ class Tictactoe
 	    x_row_total = 0
 	    3.times do |j|
         if @game_board[j][i] == "X"
-            x_row_total += 1
-        else
-            blank_x = j
+        	x_row_total += 1
+        else 
+        	blank_x = j
         end
 
         if x_row_total == 2 && blank_x > -1
@@ -98,12 +93,27 @@ class Tictactoe
 		end
   end
 
+  def block_diagonal_win
+  	blank_x = -1
+  	x_row_total = 0
+  	
+  	3.times do |i|	
+			if @game_board[i][i] == "X"
+				x_row_total += 1
+			else 
+				blank_x = i
+			end
 
-
-
-	def place_block
+			if x_row_total == 2 && blank_x > -1
+				@game_board[blank_x][blank_x] = "O"
+			end
 		
-	end
+  	end
+  end
+
+
+
+
 
 	def minus_a_turn
 		@turns -= 1
