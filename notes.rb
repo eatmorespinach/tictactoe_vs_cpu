@@ -1,44 +1,38 @@
 
-one = game_board.map {|i| i % 3 == 1 ? "X" : i}
-two = game_board.map {|i| i % 3 == 2 ? "X" : i}
-three = game_board.map {|i| i % 3 == 3 ? "X" : i}
+
+# one = game_board.map {|i| i % 3 == 1 ? "X" : i}
+# two = game_board.map {|i| i % 3 == 2 ? "X" : i}
+# three = game_board.map {|i| i % 3 == 3 ? "X" : i}
 
 
-	def block_horizontal_win 
-		3.times do |i|
-			row_of_x = 0
-			ii = 2
-			jj = 2
-			3.times do |j|
-				
-#WAYS TO DO THIS
+# #WAYS TO DO THIS
 
-#have loops check for both vertical and horizontal winning combos. if 2 X's out of 3 in 
-#a line, then automatically place O in existing spot. 
+# #have loops check for both vertical and horizontal winning combos. if 2 X's out of 3 in 
+# #a line, then automatically place O in existing spot. 
 
-				if @game_board[2][0] == "X" && @game_board[2][2] == "X"
-					@game_board[2][1] = "O"
-				#had to make this exception for the [2][2] spot in the last row
+# 				if @game_board[2][0] == "X" && @game_board[2][2] == "X"
+# 					@game_board[2][1] = "O"
+# 				#had to make this exception for the [2][2] spot in the last row
 
-				elsif	@game_board[i][j] == "X"
-					row_of_x += 1
+# 				elsif	@game_board[i][j] == "X"
+# 					row_of_x += 1
 
-					if row_of_x == 2 && ii == 2
-						@game_board[i][j+1] = "O"
-						#this places an O in the 3rd spot if 1st and 2nd spot are occupied by an X
-					else @game_board[ii][jj] = "O"
-						#this puts an O in the empty spot if 2nd and 3rd or 1st and 3rd are occupied by an X
-					end
+# 					if row_of_x == 2 && ii == 2
+# 						@game_board[i][j+1] = "O"
+# 						#this places an O in the 3rd spot if 1st and 2nd spot are occupied by an X
+# 					else @game_board[ii][jj] = "O"
+# 						#this puts an O in the empty spot if 2nd and 3rd or 1st and 3rd are occupied by an X
+# 					end
 
-				else 
-					ii = i
-					jj = j
+# 				else 
+# 					ii = i
+# 					jj = j
 
-				end
+# 				end
 			
-			end
-		end	
-	end
+# 			end
+# 		end	
+# 	end
 
 
 
